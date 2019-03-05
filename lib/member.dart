@@ -29,6 +29,8 @@
  *
  */
 
+// import 'package:ghflutter/FollowerDetailsPage.dart';
+
 class Member {
   final String login;
   final String avatarUrl;

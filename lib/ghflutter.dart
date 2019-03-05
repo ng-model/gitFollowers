@@ -1,5 +1,3 @@
-
-
 import 'dart:convert' as convert;
 
 import 'package:flutter/material.dart';
@@ -23,7 +21,7 @@ class GHFlutterState extends State<GHFlutter> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold (
+    return new Scaffold(
       appBar: new AppBar(
         title: new Text(Strings.appTitle),
       ),
@@ -46,10 +44,8 @@ class GHFlutterState extends State<GHFlutter> {
           title: new Text("${_members[i].login}", style: _biggerFont),
           leading: new CircleAvatar(
               backgroundColor: Colors.green,
-              backgroundImage: new NetworkImage(_members[i].avatarUrl)
-          ),
-        )
-    );
+              backgroundImage: new NetworkImage(_members[i].avatarUrl)),
+        ));
   }
 
   _loadData() async {
@@ -59,20 +55,21 @@ class GHFlutterState extends State<GHFlutter> {
       final membersJSON = convert.jsonDecode(response.body);
 
       for (var memberJSON in membersJSON) {
-        final member = new Member(memberJSON["login"], memberJSON["avatar_url"]);
+        final member =
+            new Member(memberJSON["login"], memberJSON["avatar_url"]);
         _members.add(member);
-         onPressed: (member) {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (context) => new FollowerDetailsPage(
-                      // title: 'Follower Details',
-                      // counter: widget.counter,
-                    ),
-                  ),
-                );
-              };
-        
+        onTap:
+        () {
+          // Navigator.push(
+          // context,
+          new MaterialPageRoute(
+            builder: (context) => new FollowerDetailsPage(
+                // title: 'Follower Details',
+                // counter: widget.counter,
+                ),
+          );
+          // );
+        };
       }
     });
   }

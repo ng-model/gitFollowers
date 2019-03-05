@@ -35,18 +35,6 @@ class GHFlutterState extends State<GHFlutter> {
             return _buildRow(index);
              
           }),
-         floatingActionButton: new FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-          context,
-          new MaterialPageRoute(
-            builder: (context) => new FollowerDetailsPage(
-                ),
-          )
-          );
-        },
-        child: new Icon(Icons.add),
-         ),
           
     );
   }
@@ -59,6 +47,15 @@ class GHFlutterState extends State<GHFlutter> {
           leading: new CircleAvatar(
               backgroundColor: Colors.green,
               backgroundImage: new NetworkImage(_members[i].avatarUrl)),
+              onTap: () {
+          Navigator.push(
+          context,
+          new MaterialPageRoute(
+            builder: (context) => new FollowerDetailsPage(
+                ),
+          )
+          );
+        },
         ),
         );
   }
@@ -80,13 +77,6 @@ class GHFlutterState extends State<GHFlutter> {
 }
 
 class GHFlutter extends StatefulWidget {
-  GHFlutter({
-    Key key,
-    this.title,
-    this.detail
-  }) :super(key: key);
-  final String title;
-  final String detail;
   @override
   createState() => new GHFlutterState();
 }
